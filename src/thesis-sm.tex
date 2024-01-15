@@ -1,0 +1,112 @@
+\documentclass[12pt,twoside,leftblank]{../sty/mitthesis}
+\usepackage{../sty/lgrind}
+\usepackage{%
+  xcolor,
+  tikz,
+  multirow,
+  float,
+  amssymb,
+  amsmath,
+  graphicx,
+  fullpage,
+  indentfirst,
+  psfrag,
+  mathrsfs,
+  array,
+  hyperref,
+  color,
+  arydshln,
+  booktabs,
+  empheq,
+  mathtools,
+  marginnote,
+  fancyvrb,
+  listings,
+  mdframed,
+  lipsum,
+  listliketab,
+  multicol,
+  enumerate,
+  lipsum,
+  multirow,
+  amsthm,
+  thmtools,
+  framed,
+  verbatim,
+  tabularx,
+  pgfplots,
+  enumitem
+}
+\usepackage[english]{babel}
+\usepackage[compact]{titlesec}
+\usepackage[titles]{tocloft}
+
+\pagestyle{plain}
+\usetikzlibrary{shapes,arrows,positioning,calc,matrix}
+
+\newcommand{\figurepath}{../fig}
+
+\usetikzlibrary{plotmarks}
+
+\tikzstyle{squareblock}=[draw, fill=white!50, rectangle, minimum height=1cm, minimum width=1cm, inner sep= 2mm]
+\tikzstyle{roundblock}=[draw, circle, fill=white!50, minimum height=1cm, inner sep= 1mm]
+\tikzstyle{whitesum} = [draw, fill=white!40, circle, minimum width=0.6cm, inner sep= 1mm]
+\tikzstyle{input} = [coordinate]
+\tikzstyle{output} = [coordinate]
+\tikzstyle{tee} = [coordinate]
+\tikzstyle{block} = [draw, rectangle, minimum height=1cm, minimum width=2cm]
+\tikzstyle{sum} = [draw, circle, node distance=1cm]
+\tikzstyle{modelinput} = [coordinate]
+\tikzstyle{modeloutput} = [coordinate]
+\tikzstyle{regionoutput} = [coordinate]
+
+\makeatletter
+\pgfdeclareshape{satnode}{
+\inheritsavedanchors[from={rectangle}]
+\inheritbackgroundpath[from={rectangle}]
+\inheritanchorborder[from={rectangle}]
+\foreach\x in {center,north east,north west,north,south,south east,south west}{%
+\inheritanchor[from={rectangle}]{\x}
+}
+\foregroundpath{%
+\pgfpointdiff{\northeast}{\southwest}
+\pgf@xa=\pgf@x\pgf@ya=\pgf@y%
+\northeast%
+\pgfpathmoveto{\pgfpoint{0}{0.45\pgf@ya}}
+\pgfpathlineto{\pgfpoint{0}{-0.45\pgf@ya}}
+\pgfpathmoveto{\pgfpoint{0.45\pgf@xa}{0}}
+\pgfpathlineto{\pgfpoint{-0.45\pgf@xa}{0}}
+\pgfpathmoveto{\pgfpointadd{\southwest}{\pgfpoint{-0.2\pgf@xa}{-0.3\pgf@ya}}}
+\pgfpathlineto{\pgfpointadd{\southwest}{\pgfpoint{-0.5\pgf@xa}{-0.3\pgf@ya}}}
+\pgfpathlineto{\pgfpointadd{\northeast}{\pgfpoint{-0.5\pgf@xa}{-0.3\pgf@ya}}}
+\pgfpathlineto{\pgfpointadd{\northeast}{\pgfpoint{-0.4\pgf@xa}{-0.3\pgf@ya}}}
+{%
+   \pgftransformshift{\pgfpointadd{\northeast}{\pgfpoint{-0.4\pgf@xa}{-0.3\pgf@ya}}}
+   \pgftransformscale{0.5}
+   \pgfsetcolor{black}
+   \pgftext[left]{}
+}
+\pgfusepath{stroke}
+}
+}
+\makeatother
+
+\pgfdeclarelayer{background}
+\pgfdeclarelayer{foreground}
+\pgfsetlayers{background,main,foreground}
+
+\renewcommand{\theenumi}{\Alph{enumi}}
+
+\begin{document}
+\input{chapters/cover}
+\pagestyle{plain}
+\input{chapters/contents}
+\input{chapters/chapter-1-introduction}
+\input{chapters/chapter-2-vehicle-model}
+\input{chapters/chapter-3-controller-design}
+\input{chapters/chapter-4-simulation-results}
+\input{chapters/chapter-5-conclusions}
+\appendix
+\input{chapters/appendix}
+\input{chapters/bibliography}
+\end{document}

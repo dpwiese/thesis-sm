@@ -1,0 +1,6 @@
+This thesis presents a an adaptive augmented, gain-scheduled baseline LQR-PI controller applied to the Road Runner six-degree-of-freedom generic hypersonic vehicle model.
+Uncertainty in control effectiveness, longitudinal center of gravity location, and aerodynamic coefficients are introduced in the model, as well as sensor bias and noise, and input time delays.
+The performance of the baseline controller is compared to the same design augmented with one of two different model-reference adaptive controllers: a classical open-loop reference model design, and modified closed-loop reference model design.
+Both adaptive controllers show improved command tracking and stability over the baseline controller when subject to these uncertainties.
+The closed-loop reference model controller offers the best performance, tolerating a reduced control effectiveness of 50\%, rearward center of gravity shift of -0.9 to -1.6 feet (6--11\% of vehicle length), aerodynamic coefficient uncertainty scaled $4\times$ the nominal value, and sensor bias of $+1.6$ degrees on sideslip angle measurement.
+The closed-loop reference model adaptive controller maintains at least 73\% of the delay margin provided by the robust baseline design, tolerating input time delays of between 18--46 ms during 3 degree angle of attack doublet, and 80 degree roll step commands.
